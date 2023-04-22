@@ -4,7 +4,7 @@
 # Title: Total Power Radiometer - AD9361
 # Author: Matthew E Nelson
 # Description: Total power radiometer connecting to a AD9361 SDR
-# Generated: Thu Jan  1 00:20:51 1970
+# Generated: Thu Jan  1 00:55:57 1970
 ##################################################
 
 import os
@@ -12,7 +12,6 @@ import sys
 sys.path.append(os.environ.get('GRC_HIER_PATH', os.path.expanduser('~/.grc_gnuradio')))
 
 from TPR import TPR  # grc-generated hier_block
-from datetime import datetime
 from gnuradio import blocks
 from gnuradio import eng_notation
 from gnuradio import gr
@@ -25,7 +24,7 @@ from optparse import OptionParser
 
 class AD9361_TPR_nogui(gr.top_block):
 
-    def __init__(self, RF_bandwidth=15000000, calib_1=4.0755e3, calib_2=-342.774, dc_gain=1, fftsize=8192, frequency=1.4125e9, integ=2, prefix="/home/analog/Documents/sdr_dev/data/", sample_rate=10e6, spavg=1):
+    def __init__(self, RF_bandwidth=15000000, calib_1=4.0755e3, calib_2=-342.774, dc_gain=1, fftsize=8192, frequency=1.4125e9, integ=2, sample_rate=10e6, spavg=1):
         gr.top_block.__init__(self, "Total Power Radiometer - AD9361")
 
         ##################################################
@@ -38,15 +37,12 @@ class AD9361_TPR_nogui(gr.top_block):
         self.fftsize = fftsize
         self.frequency = frequency
         self.integ = integ
-        self.prefix = prefix
         self.sample_rate = sample_rate
         self.spavg = spavg
 
         ##################################################
         # Variables
         ##################################################
-        self.tpr_kelvin_file = tpr_kelvin_file = prefix +  "tpr_kelvin.dat"
-        self.tpr_file = tpr_file = prefix +  "tpr.dat"
         self.samp_rate = samp_rate = int(sample_rate)
         self.freq = freq = frequency
         self.file_rate = file_rate = 2.0
@@ -59,9 +55,9 @@ class AD9361_TPR_nogui(gr.top_block):
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((calib_1, ))
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vff((dc_gain, ))
         self.blocks_keep_one_in_n_1 = blocks.keep_one_in_n(gr.sizeof_float*1, int(det_rate/file_rate))
-        self.blocks_file_sink_1 = blocks.file_sink(gr.sizeof_float*1, tpr_file, False)
+        self.blocks_file_sink_1 = blocks.file_sink(gr.sizeof_float*1, "tpr.dat", False)
         self.blocks_file_sink_1.set_unbuffered(True)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_float*1, tpr_kelvin_file, False)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_float*1, "tpr_kelvin.dat", False)
         self.blocks_file_sink_0.set_unbuffered(True)
         self.blocks_add_const_vxx_1 = blocks.add_const_vff((calib_2, ))
         self.blks2_valve_1 = grc_blks2.valve(item_size=gr.sizeof_float*1, open=bool(0))
@@ -134,14 +130,6 @@ class AD9361_TPR_nogui(gr.top_block):
         self.integ = integ
         self.TPR_0.set_integ(self.integ)
 
-    def get_prefix(self):
-        return self.prefix
-
-    def set_prefix(self, prefix):
-        self.prefix = prefix
-        self.set_tpr_file(self.prefix +  "tpr " + datetime.now().strftime("%Y.%m.%d.%H.%M.%S") + ".dat")
-        self.set_tpr_kelvin_file(self.prefix +  "tpr_kelvin " + datetime.now().strftime("%Y.%m.%d.%H.%M.%S") + ".dat")
-
     def get_sample_rate(self):
         return self.sample_rate
 
@@ -155,20 +143,6 @@ class AD9361_TPR_nogui(gr.top_block):
 
     def set_spavg(self, spavg):
         self.spavg = spavg
-
-    def get_tpr_kelvin_file(self):
-        return self.tpr_kelvin_file
-
-    def set_tpr_kelvin_file(self, tpr_kelvin_file):
-        self.tpr_kelvin_file = tpr_kelvin_file
-        self.blocks_file_sink_0.open(self.tpr_kelvin_file)
-
-    def get_tpr_file(self):
-        return self.tpr_file
-
-    def set_tpr_file(self, tpr_file):
-        self.tpr_file = tpr_file
-        self.blocks_file_sink_1.open(self.tpr_file)
 
     def get_samp_rate(self):
         return self.samp_rate
@@ -214,12 +188,10 @@ if __name__ == '__main__':
         help="Set Center Frequency [default=%default]")
     parser.add_option("", "--integ", dest="integ", type="eng_float", default=eng_notation.num_to_str(2),
         help="Set Integration Time (seconds) [default=%default]")
-    parser.add_option("", "--prefix", dest="prefix", type="string", default="/home/analog/Documents/sdr_dev/data/",
-        help="Set prefix [default=%default]")
     parser.add_option("", "--spavg", dest="spavg", type="intx", default=1,
         help="Set Spectral Averaging (Seconds) [default=%default]")
     (options, args) = parser.parse_args()
-    tb = AD9361_TPR_nogui(RF_bandwidth=options.RF_bandwidth, calib_1=options.calib_1, calib_2=options.calib_2, fftsize=options.fftsize, frequency=options.frequency, integ=options.integ, prefix=options.prefix, spavg=options.spavg)
+    tb = AD9361_TPR_nogui(RF_bandwidth=options.RF_bandwidth, calib_1=options.calib_1, calib_2=options.calib_2, fftsize=options.fftsize, frequency=options.frequency, integ=options.integ, spavg=options.spavg)
     tb.start()
     try:
         raw_input('Press Enter to quit: ')
