@@ -1,5 +1,17 @@
-## SDR Radiometer Application for CySat
+# Software-Defined Radio (SDR) Radiometer Application for CySat
 
+## Hardware
+- [Analog Devices ADRV936x System-on-a-Chip (SoC) SDR](https://wiki.analog.com/resources/eval/user-guides/adrv936x_rfsom)
+- [Analog Devices ADRV1CRR-FMC Carrier Board](https://wiki.analog.com/resources/eval/user-guides/pzsdr/carriers/fmc)
+
+## AD9361 Docs
+- [CyBox](https://iastate.app.box.com/folder/174136460111)
+- [Professor Matthew Nelson Master's Thesis - Radiometer SDR](https://github.com/matgyver/Radiometer-SDR-Thesis)
+- [Intro to SDRs](https://greatscottgadgets.com/sdr/)
+- `/AD9361 Resources` contains files related to the connection the to the Radiometer
+- `/sdr_dev` contains all the dev files running on the SDR chip
+
+## Instructions
 The SDR board has been confirmed to output the correct data from the radiometer application
 (radiometer_app.py), which instantiates the auto-generated python code
 ‘AD9361_TPR_nogui.py’ that was generated from the GNURadio Companion design
@@ -18,7 +30,7 @@ Signal (JX1 pin 5). The SDR will communicate with the Flight Computer via UART: 
 pins: H1-39 and H1-40 respectively. These correlate to the Flight Computer’s system UART
 Tx/Rx.
 
-## SDR Board sequence
+### SDR Board sequence
 
 1. Flight Computer sets a SDR_EN pin high.
 2. This will boot the board, which runs the Radiometer python script on startup.
@@ -96,8 +108,3 @@ This should now be ready to test.
 5. Verify array contains data via: ‘tpr’
 6. Import data via: ‘tpr_kelvin = scipy.fromfile(open("tpr_kelvin.dat"), dtype=scipy.float32)’
 7. Verify array contains data via: ‘tpr_kelvin’
-
-## AD9361 Docs
-
-- AD9361 Resources contains files related to the connection the to the Radiometer
-- Radiometer Application Code contains all the dev files running on the SDR chip
