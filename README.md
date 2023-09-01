@@ -4,6 +4,7 @@
 If it is dealing with RF and its not a radio it goes in here
 
 `SDR Board` contains files related to the SDR chip and AD9361
+
 `SDR Carrier Board` contains files related to the dev carrier board
 
 ## Hardware
