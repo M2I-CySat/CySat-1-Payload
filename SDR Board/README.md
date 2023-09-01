@@ -1,7 +1,7 @@
 # Software-Defined Radio (SDR) Radiometer Application for CySat
 
 ## Hardware
-- [Analog Devices ADRV936x System-on-a-Chip (SoC) SDR](https://wiki.analog.com/resources/eval/user-guides/adrv936x_rfsom)
+- [Analog Devices ADRV1-9361-Z7035 (ADRV9361) System-on-a-Chip (SoC) SDR](https://wiki.analog.com/resources/eval/user-guides/adrv936x_rfsom)
 - [Analog Devices ADRV1CRR-FMC Carrier Board](https://wiki.analog.com/resources/eval/user-guides/pzsdr/carriers/fmc)
 
 ## AD9361 Docs
