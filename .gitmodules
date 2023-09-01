@@ -4,11 +4,6 @@
 [submodule "Radiometer-Antenna"]
 	path = Radiometer-Antenna
 	url = git@github.com:M2I-CySat/Radiometer-Antenna.git
-[submodule "Radiometer_FW"]
-	path = Radiometer_FW
-	url = git@github.com:M2I-CySat/Radiometer_FW.git
 [submodule "SDR-Carrier-Board"]
 	path = SDR-Carrier-Board
-	url = ./SDR-Carrier-Board/
-[submodule "./SDR-Carrier-Board"]
-	url = https://github.com/M2I-CySat/SDR-Carrier-Board
+	url = git@github.com/M2I-CySat/SDR-Carrier-Board
