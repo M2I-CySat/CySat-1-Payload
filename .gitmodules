@@ -10,3 +10,5 @@
 [submodule "SDR-Carrier-Board"]
 	path = SDR-Carrier-Board
 	url = ./SDR-Carrier-Board/
+[submodule "./SDR-Carrier-Board"]
+	url = https://github.com/M2I-CySat/SDR-Carrier-Board
