@@ -1,16 +1,5 @@
 # Software-Defined Radio (SDR) Radiometer Application for CySat
 
-## Hardware
-- [Analog Devices ADRV936x System-on-a-Chip (SoC) SDR](https://wiki.analog.com/resources/eval/user-guides/adrv936x_rfsom)
-- [Analog Devices ADRV1CRR-FMC Carrier Board](https://wiki.analog.com/resources/eval/user-guides/pzsdr/carriers/fmc)
-
-## AD9361 Docs
-- [CyBox](https://iastate.app.box.com/folder/174136460111)
-- [Professor Matthew Nelson Master's Thesis - Radiometer SDR](https://github.com/matgyver/Radiometer-SDR-Thesis)
-- [Intro to SDRs](https://greatscottgadgets.com/sdr/)
-- `/AD9361 Resources` contains files related to the connection the to the Radiometer
-- `/sdr_dev` contains all the dev files running on the SDR chip
-
 ## Instructions
 The SDR board has been confirmed to output the correct data from the radiometer application
 (radiometer_app.py), which instantiates the auto-generated python code
