@@ -59,15 +59,20 @@ def main():
 
             #check if byte matches start of packet value
             if(ord(byte) == 0xFF):
-                
                 #parse packet bytes
                 packet_data = read_cysat_packet(sdr_uart)
 
                 #handle the packet information
                 if verify_checksum(packet_data):
+                    print("Valid checksum, going to handle now")
                     handle_packet(sdr_uart, packet_data)
                 else:
                     print("Invalid checksum")
+                    handle_packet(sdr_uart, packet_data) # TODO: REMOVE!!!!
+            else:
+                print("Byte not ff")
+        else:
+            print("Length of byte is zero")
 
 
 def read_cysat_packet(uart):
@@ -322,7 +327,9 @@ def calculate_checksum(cmd_id, payload_bytearray):
     return checksum
     
 def verify_checksum(packet):
-    byte_sum = packet.subsystemType
+    byte_sum = 0
+
+    byte_sum += packet.subsystemType
     byte_sum += packet.command
     byte_sum += packet.dataLength
     for char in packet.data:

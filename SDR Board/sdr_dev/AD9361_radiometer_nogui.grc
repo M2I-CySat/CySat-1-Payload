@@ -182,6 +182,60 @@
     </param>
   </block>
   <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1024, 155)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>tpr_file</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>prefix +  "tpr " + datetime.now().strftime("%Y.%m.%d.%H.%M.%S") + ".dat"</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1024, 219)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>tpr_kelvin_file</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>prefix +  "tpr_kelvin " + datetime.now().strftime("%Y.%m.%d.%H.%M.%S") + ".dat"</value>
+    </param>
+  </block>
+  <block>
     <key>parameter</key>
     <param>
       <key>alias</key>
@@ -452,7 +506,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>"tpr_kelvin.dat"</value>
+      <value>tpr_kelvin_file</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -503,7 +557,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>"tpr.dat"</value>
+      <value>tpr_file</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -922,7 +976,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>auto_filter</key>
@@ -1003,6 +1057,37 @@
     <param>
       <key>samplerate</key>
       <value>int(sample_rate)</value>
+    </param>
+  </block>
+  <block>
+    <key>import</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1024, 19)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>import_0</value>
+    </param>
+    <param>
+      <key>import</key>
+      <value>from datetime import datetime</value>
     </param>
   </block>
   <block>
@@ -1139,6 +1224,49 @@
     <param>
       <key>note</key>
       <value>DC gain</value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1024, 75)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>prefix</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value></value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>string</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>/home/analog/Documents/sdr_dev/data/</value>
     </param>
   </block>
   <block>

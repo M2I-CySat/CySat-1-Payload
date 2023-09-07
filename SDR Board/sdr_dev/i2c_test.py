@@ -37,10 +37,9 @@ def main():
             #msg = i2c_msg.write(0, bytes(data.encode("ascii")))
             #bus.i2c_rdwr(msg)
     	    print(ser.read(4))
-	    time.sleep(1)
-	    ser.write(b'hello from i2c_test\r\n')
-
-	ser.close()
+        time.sleep(1)
+        ser.write(b'hello from i2c_test\r\n')
+        ser.close()
         # From i2c 0x0(internal address) read 1 byte data, using ioctl_read.
         # data = i2c.ioctl_read(0x0, 1)
         # Write data to i2c, buf must be read-only type
